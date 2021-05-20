@@ -1,0 +1,22 @@
+ <div class="form">
+  <%= form_with url: "/show", local: true, method: :get do |f| %>
+    <div class="field">
+    <p>
+      <%#= f.label :ref_amount, "Kwota" %>
+      <%= f.text_area :ref_amount, size: "8x1" %>
+
+      <%#= f.label :ref_currency, :ref_currency %>
+      <%= f.select :ref_currency, ['PLN', 'EUR', 'USD']%>
+      =>
+      <%#= f.label :rel_currency, :rel_currency %>
+      <%= f.select :rel_currency, ['PLN', 'EUR' , 'USD']%>
+
+
+
+      <%= f.submit "Pobierz kurs" %>
+
+      <%= @rel_amount %>
+      </p>
+    </div>
+  <% end%>
+</div>
