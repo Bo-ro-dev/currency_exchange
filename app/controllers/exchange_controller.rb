@@ -2,8 +2,13 @@ class ExchangeController < ApplicationController
 
   def show
     if params[:ref_amount]
-      ratio = RatioFetcher.request_for(params[:ref_currency], params[:rel_currency])
-      @rel_amount = params[:ref_amount].to_i * ratio
+      rate = RatioFetcher.new(params[:ref_currency], params[:rel_currency])
+      rate = rate.request_for
+      render json: {
+        from: params[:ref_currency],
+        to: params[:rel_currency],
+        rate: rate
+      }
     else
     end
   end
